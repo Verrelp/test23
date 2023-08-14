@@ -13,7 +13,7 @@ const blogPosts = [
     }
 ];
 
-function createBlogPostElement(post){
+function createBlogPostElement(post) {
     const blogPostElement = document.createElement("article");
     blogPostElement.className = "blog-post";
 
@@ -21,18 +21,42 @@ function createBlogPostElement(post){
     titleElement.textContent = post.title;
 
     const authorElement = document.createElement("p");
-    authorElement.textConter = `By ${post.author} on ${post.date}`;
+    authorElement.textContent = `By ${post.author} on ${post.date}`;
 
     const contentElement = document.createElement("p");
     contentElement.textContent = post.content;
+
+    blogPostElement.appendChild(titleElement);
+    blogPostElement.appendChild(authorElement);
+    blogPostElement.appendChild(contentElement);
 
     return blogPostElement;
 }
 
 const blogList = document.getElementById("blog-list");
 
-blogPosts.forEach( post => {
-conts blogPostElement = createBlogPostElement(post);
-blogList.appendChild(blogPostElement);
+function showBlogDetails(post) {
+    const detailContainer = document.getElementById("blog-detail");
+    detailContainer.innerHTML = "";
 
+    const titleElement = document.createElement("h2");
+    titleElement.textContent = post.title;
+
+    const authorElement = document.createElement("p");
+    authorElement.textContent = `By ${post.author} on ${post.date}`;
+
+    const contentElement = document.createElement("p");
+    contentElement.textContent = post.content;
+
+    detailContainer.appendChild(titleElement);
+    detailContainer.appendChild(authorElement);
+    detailContainer.appendChild(contentElement);
+}
+
+blogPosts.forEach((post, index) => {
+    const blogPostElement = createBlogPostElement(post);
+    blogPostElement.addEventListener("click", () => {
+        showBlogDetails(post);
+    });
+    blogList.appendChild(blogPostElement);
 });

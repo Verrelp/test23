@@ -1,11 +1,12 @@
-for (let n = 1; n <= 100; n++) {
-    if (n % 3 === 0 && n % 5 === 0) {
-        console.log("FizzBuzz");
-    } else if (n % 3 === 0) {
-        console.log("Fizz");
-    } else if (n % 5 === 0) {  
-        console.log("Buzz");
-    } else {
-        console.log(n);
-    }
-}
+const students = ["student1", "student2", "student3"];
+let students2 = [];
+let student1;
+students.forEach((item) => {
+  students2.push(item + " Ini Sekolah 2");
+  
+  if (item === "student1") {
+    student1 = item + " Ini Sekolah 1";
+  }
+});
+
+console.log(student1); 

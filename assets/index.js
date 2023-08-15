@@ -7,6 +7,32 @@ class Book {
         this.year = year;
     }
 
+static setTableRow() {
+    LIST_OF_BOOK.forEach((data) => {
+        $("table-book tbody").append(`<tr><td>${data.title}</td><td>${data.author}</td><td>${data.year}</td><td>${(data.category) ? data.category : "-"}</td></tr`);
+    });
+}
+
+static find(title) {
+
+    $("#table-book tbody").empty();
+    console.log(title);
+    if(title) {
+        const book = LIST_OF_BOOK.find((data) => {
+            return data.title === title;
+        })
+
+        if (book) {
+            $("#table-book tbody").append(`<tr><td>${book.title}</td><td>${book.author}</td><td>${book.year}</td><td>${(book.category) ? book.category : "-"}</td></tr>`);
+        } else {
+            $("#table-book tbody").append(`<tr><td colspan="4">Buku <b>${title}</b> Tidak Ditemukan!</td></tr>`);
+        }
+    } else {
+        this.setTableRow();
+    }
+}
+
+
     getBook() {
         return this;
     }
@@ -49,4 +75,12 @@ LIST_OF_BOOK.push(biografi_3.getBook());
 
 LIST_OF_BOOK.forEach((data) => {
 $("#table-book tbody").append(`<tr><td>${data.title}</td><td>${data.author}</td><td>${data.year}</td><td>${(data.category) ? data.category : "-"}</td></tr>`);
+})
+
+$(document).ready(() => {
+    $("input#input-search-book").keyup(function () {
+  const name =  $("input#input-search-book").val();
+    Book.find(name);
+});
+
 })

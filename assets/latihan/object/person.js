@@ -11,14 +11,14 @@ class Person {
 
     setTitle(title) {
         if (this.gender === "L") {
-            this.name = "Tuan " + this.name;
+            this.name = title + this.name;
         } else if (this.gender === "P") {
-            this.name = "Nyonya " + this.name;
+            this.name = title + this.name;
         }
     }
 
     static find(name) {
-        return persons.find(person => person.name === name);
+        return persons.find(person => person.name === name)
     } 
 }
 
@@ -32,5 +32,7 @@ persons.push(person2);
 
 console.log(persons);
 
-console.log(Person.find("John"));
+
+const personFind = Person.find("Mr.John");
+console.log(personFind);
 

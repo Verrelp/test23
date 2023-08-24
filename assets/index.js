@@ -9,7 +9,7 @@ class Book {
 
 static setTableRow() {
     LIST_OF_BOOK.forEach((data) => {
-        $("table-book tbody").append(`<tr><td>${data.title}</td><td>${data.author}</td><td>${data.year}</td><td>${(data.category) ? data.category : "-"}</td></tr`);
+        $("#table-book tbody").append(`<tr><td>${data.title}</td><td>${data.author}</td><td>${data.year}</td><td>${(data.category) ? data.category : "-"}</td></tr`);
     });
 }
 
